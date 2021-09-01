@@ -1076,15 +1076,9 @@ void IMB_get_rank_portion(int rank, int NP, size_t size,
 
     ne = (size+unit_size-1)/unit_size;
     baslen = ne/NP;
-    mod    = (int) ne%NP;
 
-    if( rank < mod ) {
-        *pos1 = rank*(baslen+1)*unit_size;
-        *pos2 = *pos1-1+(baslen+1)*unit_size;
-    } else {
-        *pos1 = (rank*baslen + mod)*unit_size;
-        *pos2 = *pos1-1 + baslen*unit_size;
-    }
+    *pos1 = rank*(baslen+1)*unit_size;
+    *pos2 = *pos1-1 + baslen*unit_size;
 
     *pos2 = min(*pos2,size-1);
 }
